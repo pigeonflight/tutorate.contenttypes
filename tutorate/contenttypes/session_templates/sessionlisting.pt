@@ -37,10 +37,14 @@
 
             <div class="w-row">
             	<tal:items tal:repeat="item results"               
-      tal:attributes="id  item/id">
-      			<div class="w-col w-col-3">
-            		<div class="session-item">
-            			<img src="http://uploads.webflow.com/543ff8a19b9728262e6e14ab/5441fd8330c4cd0938929226_appengineprimer.png" alt="5441fd8330c4cd0938929226_appengineprimer.png">
+      tal:attributes="id  item/id;">
+      			<div class="w-col w-col-4">
+            		<div class="session-item" tal:define="item_object item/getObject;">
+            	    <img tal:define="scales item_object/@@images"
+     				tal:replace="structure python: scales.tag('image', scale='large')"
+     			    />
+            		<!--	<img src="" alt=""
+                             tal:replace="structure python: path('nocall:item_object/tag')(scale='large')" /> -->
             				<div class="session-data">
             					<h4 tal:content="item/Title">Google App Engine Primer for Python</h4>
             					<a class="button learn-more" href="#"

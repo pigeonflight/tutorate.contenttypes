@@ -10,11 +10,13 @@ from plone.dexterity.content import Item
 
 from plone.directives import dexterity, form
 from plone.app.textfield import RichText
-
+from plone import api
+from plone.api.exc import UserNotFoundError
 from plone.namedfile.field import NamedImage, NamedFile
 from plone.namedfile.field import NamedBlobImage, NamedBlobFile
 from plone.namedfile.interfaces import IImageScaleTraversable
 from Products.ATContentTypes.interface import IATFolder
+from AccessControl import getSecurityManager
 
 from tutorate.contenttypes import MessageFactory as _
 
@@ -86,11 +88,25 @@ class SessionListing(grok.View):
     grok.context(IATFolder)
     grok.require('zope2.View')
 
+    
+
 class View(grok.View):
     """ session view class """
 
     grok.context(ISession)
     grok.require('zope2.View')
+
+    def can_edit(self):
+        user = api.user.get_current()
+        try:
+            permissions = api.user.get_permissions(username=user.id, 
+                              obj=self.context) 
+            can_edit_ = permissions['Modify portal content']           
+        except UserNotFoundError:
+            # check if they are an admin
+            user = getSecurityManager().getUser()
+            can_edit_ = 'Manager' in user.getRoles() 
+        return can_edit_
 
     # grok.name('view')
 
