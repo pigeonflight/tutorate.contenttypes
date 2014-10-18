@@ -10,10 +10,11 @@ from plone.dexterity.content import Item
 
 from plone.directives import dexterity, form
 from plone.app.textfield import RichText
+
 from plone.namedfile.field import NamedImage, NamedFile
 from plone.namedfile.field import NamedBlobImage, NamedBlobFile
 from plone.namedfile.interfaces import IImageScaleTraversable
-
+from Products.ATContentTypes.interface import IATFolder
 
 from tutorate.contenttypes import MessageFactory as _
 
@@ -30,7 +31,33 @@ class ISession(form.Schema, IImageScaleTraversable):
     # If you want a model-based interface, edit
     # models/session.xml to define the content type.
 
-    form.model("models/session.xml")
+    #form.model("models/session.xml")
+    topics = RichText(
+            title=_(u"Topics"),
+            description=_(u"areas to be covered"),
+            required=False,
+        ) 
+    audience = RichText(
+            title=_(u"Audience"),
+            description=_(u"Your intended audience (e.g. startups, business persons, educators, web designers, programmers etc..)"),
+            required=False,
+        )
+    sign_up_url = schema.Text(
+            title=_(u"Sign Up URL"),
+            description=_(u"URL to a sign up form"),
+            required=False,
+        )
+    details = RichText(
+            title=_(u"Details"),
+            description=_(u"a more detailed overview"),
+            required=False,
+        )
+
+    image = NamedBlobImage(
+        title=_(u"Profile picture"),
+        required=False,
+    )
+
 
 
 # Custom content-type class; objects created for this content type will
@@ -55,8 +82,12 @@ class Session(Item):
 # of this type by uncommenting the grok.name line below or by
 # changing the view class name and template filename to View / view.pt.
 
-class SampleView(grok.View):
-    """ sample view class """
+class SessionListing(grok.View):
+    grok.context(IATFolder)
+    grok.require('zope2.View')
+
+class View(grok.View):
+    """ session view class """
 
     grok.context(ISession)
     grok.require('zope2.View')

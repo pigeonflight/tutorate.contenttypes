@@ -28,6 +28,7 @@ setup(name='tutorate.contenttypes',
           'setuptools',
           'plone.app.dexterity [grok]',
           'plone.namedfile [blobs]',
+          'plone.app.imagecropping',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
