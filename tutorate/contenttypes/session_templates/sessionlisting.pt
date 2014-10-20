@@ -45,10 +45,12 @@
       tal:attributes="id  item/id;">
       			<div class="w-col w-col-4">
             		<div class="session-item" tal:define="item_object item/getObject;">
-            	    <img tal:condition="item_object/image | nothing"
+            	    <a tal:condition="item_object/image | nothing" 
+                        tal:attributes="href item/getURL">
+                        <img 
             	    tal:define="scales item_object/@@images"
      				tal:replace="structure python: scales.tag('image',css_class='session-image', scale='large')"
-     			    />
+     			    /></a>
             		<!--	<img src="" alt=""
                              tal:replace="structure python: path('nocall:item_object/tag')(scale='large')" /> -->
             				<div class="session-data">
