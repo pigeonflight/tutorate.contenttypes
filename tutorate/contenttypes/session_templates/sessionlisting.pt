@@ -49,7 +49,7 @@
             				<div class="session-data">
             					<h4 tal:content="item/Title">Google App Engine Primer for Python</h4>
             					<a class="button learn-more" href="#"
-            						tal:attributes="href item/absolute_url">Learn more</a>
+            						tal:attributes="href item/getURL">Learn more</a>
             					<div class="session-description" tal:content="item/Description">Google App Engine is designed for building web-based applications. Out of the box it solves a lot of the problems that developers would otherwise be trying to solve themselves. It doesn't hurt that it's built on Google's infrastructure and experience. This session focuses on using Python to begin development on Google App Engine.
             					</div>
             				</div>
