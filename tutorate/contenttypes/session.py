@@ -44,10 +44,15 @@ class ISession(form.Schema, IImageScaleTraversable):
             description=_(u"Your intended audience (e.g. startups, business persons, educators, web designers, programmers etc..)"),
             required=False,
         )
-    sign_up_url = schema.Text(
-            title=_(u"Sign Up URL"),
-            description=_(u"URL to a sign up form"),
+    google_form_key = schema.Text(
+            title=_(u"Sign Up Form Key"),
+            description=_(u"Form Key of Google Form"),
             required=False,
+        )
+    google_form_height = schema.Int(
+            title=_(u"Sign Up Form Height"),
+            description=_(u"Height of Google Form"),
+            default=1300,
         )
     details = RichText(
             title=_(u"Details"),
@@ -95,6 +100,12 @@ class View(grok.View):
 
     grok.context(ISession)
     grok.require('zope2.View')
+
+    def google_form_url(self):
+        context = self.context.aq_inner
+        formkey = context.google_form_key
+        return "https://docs.google.com/spreadsheet/embeddedform?formkey=%s" % formkey
+
 
     def can_edit(self):
         user = api.user.get_current()
