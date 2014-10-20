@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.4a
+-------------------
+
+- Further refactoring on the session listing. Now includes separation of rendering for description and title.
+
 1.0.3a
 -------------------
 
