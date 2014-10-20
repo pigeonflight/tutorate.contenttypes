@@ -36,7 +36,7 @@
            Batch python:modules['Products.CMFPlone'].Batch;
            b_size python:int(request.get('b_size', 6));
            b_start python:int(request.get('b_start', 0));
-           results python:context.restrictedTraverse('@@folderListing')(batch=True,sort_order='reverse', b_size=b_size, b_start=b_start);
+           results python:context.restrictedTraverse('@@folderListing')(batch=True,sort_order='ascending', sort_on='getObjPositionInParent', b_size=b_size, b_start=b_start);
            batch python:Batch(results, b_size, b_start);">
 
 
