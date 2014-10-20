@@ -1,6 +1,14 @@
 Changelog
 =========
 
+1.0.7a
+-------------------
+
+- added ability to customize the form height on each form
+
+- refactored to use google forms, sign up url is now google form key
+
+
 1.0.6a
 -------------------
 
