@@ -42,7 +42,7 @@
             		<div class="session-item" tal:define="item_object item/getObject;">
             	    <img tal:condition="item_object/image | nothing"
             	    tal:define="scales item_object/@@images"
-     				tal:replace="structure python: scales.tag('image', scale='large')"
+     				tal:replace="structure python: scales.tag('image',css_class='session-image', scale='large')"
      			    />
             		<!--	<img src="" alt=""
                              tal:replace="structure python: path('nocall:item_object/tag')(scale='large')" /> -->
