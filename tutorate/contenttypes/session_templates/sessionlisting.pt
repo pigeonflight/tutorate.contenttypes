@@ -14,7 +14,9 @@
        tal:attributes="src string:${context/@@plone_portal_state/portal_url }/++resource++tutorate.contenttypes/script.js"></script>
    -->
   </metal:js-slot>
-
+<metal:content-description fill-slot="content-description">
+  <p tal:condition="context/Description|nothing" tal:content="context/Description" class="section-subtitle">stuff here</p>
+</metal:content-description>
   <metal:content-core fill-slot="content-core">
     <metal:content-core define-macro="content-core">
 
@@ -29,7 +31,7 @@
 
         <tal:batch tal:define="
            Batch python:modules['Products.CMFPlone'].Batch;
-           b_size python:int(request.get('b_size', 20));
+           b_size python:int(request.get('b_size', 6));
            b_start python:int(request.get('b_start', 0));
            results python:context.restrictedTraverse('@@folderListing')(batch=True,sort_order='reverse', b_size=b_size, b_start=b_start);
            batch python:Batch(results, b_size, b_start);">
