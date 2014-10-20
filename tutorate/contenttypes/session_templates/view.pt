@@ -24,26 +24,31 @@
 
         </div>
         <div class="w-col w-col-6 content-column">
-          <h3>What you’ll learn</h3>
-          <tal:topics tal:content="structure context/topics/output">
+          <tal:block tal:condition="context/topics|nothing">
+            <h3>What you’ll learn</h3>
+            <tal:topics tal:content="structure context/topics/output">
             <p>- All major browsers are supported
             <br>- including Internet Explorer.
             <br>– Send it to your best friends and your grandma.
             <br>- It’ll work on their computers and phones.
             <br>– Send it to your best friends and your grandma. It’ll work on their – computers and phones.</p>
+            </tal:topics>
+          </tal:block>
+          <tal:block tal:condition="context/audience|nothing">
           <h3>Intended Audience</h3>
-          <p>Startups
+          <div tal:content="structure context/audience/output">Startups
             <br>Small Business Owners
             <br>Marketing Managers
-            <br>Marketers</p>
-          </tal:topics>
+            <br>Marketers</div>
+          
+          </tal:block> 
         </div>
       </div>
     </div>
 
   
-    <div class="w-container grey content-column">
-      <h2 class="section-title">More information on this session</h2>
+    <div class="w-container grey content-column" tal:condition="context/details|nothing">
+      <h2 class="section-title">Additional information on the session</h2>
       
       <div class="w-row">
         <div class="w-col w-col-12">
@@ -51,7 +56,7 @@
           <p  tal:replace="structure context/details/output">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
         </div>
        
-      
+      </div>
     </div>
  
   <div tal:condition="nothing" class="section">

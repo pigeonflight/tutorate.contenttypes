@@ -10,5 +10,5 @@
   <!-- -*- extra stuff goes here -*- -->
   <object name="tutorate.contenttypes.session" meta_type="Dexterity FTI" />
   <object name="Folder"
-    meta_type="Factory-based Type Information with dynamic views"/<name />
+    meta_type="Factory-based Type Information with dynamic views" />
 </object>
