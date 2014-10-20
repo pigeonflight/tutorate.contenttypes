@@ -4,6 +4,9 @@ Changelog
 1.0.7a
 -------------------
 
+- fixed the session view so that it will not present a sign up form 
+   unless a form key is provided
+
 - added ability to customize the form height on each form
 
 - refactored to use google forms, sign up url is now google form key
