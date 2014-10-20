@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.6a
+-------------------
+
+- Sort order is now done by position in parent for the session listing
+
 1.0.5a
 -------------------
 
