@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.5a
+-------------------
+
+- Fixed the default view on the sessions so that they don't break if now image is present
+
 1.0.4a
 -------------------
 
