@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.2a
+-------------------
+
+- Changed link for each session in sessionlisting to use absolute url
+
 1.0.1a
 -------------------
 
