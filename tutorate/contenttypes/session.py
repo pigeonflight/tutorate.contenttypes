@@ -46,7 +46,7 @@ class ISession(form.Schema, IImageScaleTraversable):
         )
     google_form_key = schema.Text(
             title=_(u"Sign Up Form Key"),
-            description=_(u"Form Key of Google Form"),
+            description=_(u"Form Key of Google Form, for older Google Forms add a ':' at the end of the Key"),
             required=False,
         )
     google_form_height = schema.Int(
@@ -104,7 +104,14 @@ class View(grok.View):
     def google_form_url(self):
         context = self.context.aq_inner
         formkey = context.google_form_key
-        return "https://docs.google.com/spreadsheet/embeddedform?formkey=%s" % formkey
+
+        if "-" in formkey:
+            # new style form
+            url = "https://docs.google.com/forms/d/%s/viewform?embedded=true"  % formkey
+        else:
+            # old style form
+            url = "https://docs.google.com/spreadsheet/embeddedform?formkey=%s" % formkey        
+        return url
 
 
     def can_edit(self):
