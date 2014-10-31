@@ -1,6 +1,14 @@
 Changelog
 =========
 
+1.0.7.3a
+-------------------
+
+- Updated to support old and new google forms
+
+- Fixed error when google form key is not present
+
+
 1.0.7a
 -------------------
 

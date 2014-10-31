@@ -101,6 +101,14 @@ class View(grok.View):
     grok.context(ISession)
     grok.require('zope2.View')
 
+    def google_form_url_valid(self):
+        context = self.context.aq_inner
+        formkey = context.google_form_key
+        if formkey:
+            if len(formkey) > 14:
+                return True
+        return False
+
     def google_form_url(self):
         context = self.context.aq_inner
         formkey = context.google_form_key

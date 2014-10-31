@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0.7.2a'
+version = '1.0.7.3a'
 
 setup(name='tutorate.contenttypes',
       version=version,

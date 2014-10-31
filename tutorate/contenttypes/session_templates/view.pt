@@ -11,7 +11,8 @@
     <div class="w-container">
       <h2 class="section-title" tal:content="context/Title">The Technology Behind Online Marketing</h2>
       <p class="section-subtitle" tal:content="context/Description">Send it to your best friends and your grandma. It’ll work on their computers and phones.</p>
-      <div tal:condition="context/google_form_key|nothing" class="button-group center">
+      <tal:signup tal:condition="view/google_form_url_valid">
+      <div class="button-group center">
         <a  class="button sign-up" data-ix="show-form" href="javascript:;" onclick="return false;">Sign up</a>
       </div>
       <div class="w-row">
@@ -24,6 +25,7 @@
           </div>
         </div>
       </div>
+    </tal:signup>
 
       <div class="w-row">
         <div class="w-col w-col-6 center">
